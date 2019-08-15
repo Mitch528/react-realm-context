@@ -34,6 +34,7 @@ type RealmRenderer = (context: IRealmContext) => React.ReactChild;
 export interface IRealmProviderProps extends Realm.Configuration {
   children: React.ReactNode | RealmRenderer;
   updateOnChange?: boolean;
+  realm?: Realm;
 }
 
 /**
@@ -72,8 +73,8 @@ export const generateRealmProvider = (
      * Renders the component.
      */
     public render() {
-      const { children, updateOnChange, ...config } = this.props;
-      const realm = this.memoizedRealm(config);
+      let { children, updateOnChange, realm, ...config } = this.props;
+      realm = realm || this.memoizedRealm(config);
       // Register the change listeners if asked to and they were not already there
       if (updateOnChange && !this.changeListenersAdded) {
         this.addChangeListeners(realm);
