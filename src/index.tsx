@@ -52,7 +52,7 @@ export interface IRealmContext {
 
 const createRealmContext = () => {
   const context = React.createContext<IRealmContext>(null);
-  const Consumer = generateRealmConsumer(context.Consumer);
+  const Consumer = generateRealmConsumer(context.Consumer) as any;
   return {
     RealmProvider: generateRealmProvider(context.Provider),
     RealmConsumer: Consumer,

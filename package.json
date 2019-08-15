@@ -13,7 +13,8 @@
     "test:ci": "mocha --opts config/mocha.opts --reporter mocha-junit-reporter",
     "test:environments": "mocha --opts config/mocha.opts integration-tests/environments.test.ts",
     "pretest:examples": "npm pack",
-    "test:examples": "mocha --opts config/mocha.opts integration-tests/examples.test.ts"
+    "test:examples": "mocha --opts config/mocha.opts integration-tests/examples.test.ts",
+    "prepare": "npm run build"
   },
   "main": "build/index.js",
   "types": "build/index.d.ts",
